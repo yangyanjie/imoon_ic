@@ -4,16 +4,12 @@ import {
     View,
     Text
 } from 'react-native';
-import TabNavigator from 'react-native-tab-navigator';
-import PopularPage from './PopularPage';
-import TrendingPage from './TrendingPage';
-import FavoritePage from './FavoritePage';
-import MyPage from './my/MyPage';
-class HomePage extends Component {
+
+class MyPage extends Component {
     render() {
         return (
             <View >
-                <Text>HomePage</Text>
+                <Text>MyPage</Text>
             </View>
         )
     }
@@ -30,5 +26,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default HomePage;
-
+export default MyPage;

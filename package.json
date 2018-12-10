@@ -10,6 +10,7 @@
     "react": "16.6.1",
     "react-native": "0.57.6",
     "react-native-gesture-handler": "^1.0.10",
+    "react-native-tab-navigator": "^0.3.4",
     "react-navigation": "^3.0.4"
   },
   "devDependencies": {
