@@ -2,18 +2,53 @@ import React, {Component} from 'react';
 import {
     StyleSheet,
     View,
-    Text
+    Text,
+    Image
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import PopularPage from './PopularPage';
 import TrendingPage from './TrendingPage';
 import FavoritePage from './FavoritePage';
 import MyPage from './my/MyPage';
+export const FLAG_TAB = {
+    flag_popularTab: 'tb_popular',
+    flag_trendingTab: 'tb_trending',
+    flag_favoriteTab: 'tb_favorite',
+    flag_my: 'tb_my'
+};
 class HomePage extends Component {
+    constructor(props) {
+        super(props);
+        this.params = this.props.navigation.state.params;
+        //console.log(this.params)
+        let selectedTab = this.params.selectedTab ? this.params.selectedTab : 'tb_popular';
+        this.state = {
+            selectedTab: 'tb_popular',
+            theme: this.params.theme || ThemeFactory.createTheme(ThemeFlags.Default),
+        }
+
+
+
+    }
+    _renderTab(Component,selectedTab, title, renderIcon ) {
+        return (
+            <TabNavigator.Item
+                title={title}
+                renderIcon={() => <Image style={styles.image} source={renderIcon}
+                />}
+            >
+            </TabNavigator.Item>
+        )
+    }
     render() {
         return (
-            <View >
-                <Text>HomePage</Text>
+            <View style={styles.container}>
+                <TabNavigator>
+                    {this._renderTab(PopularPage, FLAG_TAB.flag_popularTab, '最热', require('../../res/images/ic_polular.png'))}
+                    {this._renderTab(TrendingPage, FLAG_TAB.flag_trendingTab, '趋势', require('../../res/images/ic_trending.png'))}
+                    {this._renderTab(FavoritePage, FLAG_TAB.flag_favoriteTab, '收藏', require('../../res/images/ic_favorite.png'))}
+                    {this._renderTab(MyPage, FLAG_TAB.flag_my,'我的', require('../../res/images/ic_my.png'))}
+                </TabNavigator>
             </View>
         )
     }
@@ -23,6 +58,7 @@ class HomePage extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        // backgroundColor: 'red'
     },
     image: {
         height: 26,
