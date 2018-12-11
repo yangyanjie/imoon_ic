@@ -23,20 +23,28 @@ class HomePage extends Component {
         //console.log(this.params)
         let selectedTab = this.params.selectedTab ? this.params.selectedTab : 'tb_popular';
         this.state = {
-            selectedTab: 'tb_popular',
+            selectedTab: selectedTab,
             theme: this.params.theme || ThemeFactory.createTheme(ThemeFlags.Default),
         }
 
 
 
     }
+    onTabClick(from, to) {
+        this.setState({selectedTab: to})
+    }
     _renderTab(Component,selectedTab, title, renderIcon ) {
         return (
             <TabNavigator.Item
                 title={title}
+                selectedTitleStyle={this.state.theme.styles.selectedTitleStyle}
+                selected={this.state.selectedTab === selectedTab}
                 renderIcon={() => <Image style={styles.image} source={renderIcon}
+                renderSelectedIcon={() => <Image style={[styles.image, this.state.theme.styles.tabBarSelectedIcon]} source={renderIcon}/>}
                 />}
+                onPress={() => this.onTabClick(this.state.selectedTab, selectedTab)}
             >
+                <Component {...this.props} theme={this.state.theme}/>
             </TabNavigator.Item>
         )
     }
@@ -58,7 +66,6 @@ class HomePage extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // backgroundColor: 'red'
     },
     image: {
         height: 26,

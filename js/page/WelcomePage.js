@@ -31,26 +31,7 @@ class WelcomePage extends Component {
     render() {
         return null;
     }
-
-
-    // render() {
-    //     return (
-    //         <View >
-    //             <Text>WecomePage</Text>
-    //         </View>
-    //     )
-    // }
     
 }
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//     },
-//     image: {
-//         height: 26,
-//         width: 26,
-//     }
-// });
 
 export default WelcomePage;
