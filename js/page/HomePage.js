@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {
     StyleSheet,
     View,
-    Text,
     Image
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
+import SafeAreaViewPlus from '../common/SafeAreaViewPlus'
 import PopularPage from './PopularPage';
 import TrendingPage from './TrendingPage';
 import FavoritePage from './FavoritePage';
@@ -20,7 +20,6 @@ class HomePage extends Component {
     constructor(props) {
         super(props);
         this.params = this.props.navigation.state.params;
-        //console.log(this.params)
         let selectedTab = this.params.selectedTab ? this.params.selectedTab : 'tb_popular';
         this.state = {
             selectedTab: selectedTab,
@@ -50,14 +49,17 @@ class HomePage extends Component {
     }
     render() {
         return (
-            <View style={styles.container}>
+            <SafeAreaViewPlus
+                topColor={this.state.theme.themeColor}
+                bottomInset={false}
+            >
                 <TabNavigator>
                     {this._renderTab(PopularPage, FLAG_TAB.flag_popularTab, '最热', require('../../res/images/ic_polular.png'))}
                     {this._renderTab(TrendingPage, FLAG_TAB.flag_trendingTab, '趋势', require('../../res/images/ic_trending.png'))}
                     {this._renderTab(FavoritePage, FLAG_TAB.flag_favoriteTab, '收藏', require('../../res/images/ic_favorite.png'))}
                     {this._renderTab(MyPage, FLAG_TAB.flag_my,'我的', require('../../res/images/ic_my.png'))}
                 </TabNavigator>
-            </View>
+            </SafeAreaViewPlus>
         )
     }
     
