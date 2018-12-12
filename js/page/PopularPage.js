@@ -15,8 +15,10 @@ import ViewUtils from '../util/ViewUtils';
 import LanguageDao, {FLAG_LANGUAGE} from '../expand/dao/LanguageDao';
 import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view';
 import BaseComponent from './BaseComponent';
-import DataRepository, {FLAG_STORAGE} from '../expand/dao/DataRepository'
+import DataRepository, {FLAG_STORAGE} from '../expand/dao/DataRepository';
+import ProjectModel from '../model/ProjectModel';
 const QUERY_STR = '&sort=stars';
+
 var dataRepository = new DataRepository(FLAG_STORAGE.flag_popular);
 class PopularPage extends Component {
     constructor(props) {
@@ -30,7 +32,6 @@ class PopularPage extends Component {
         this.loadLanguage();
     }
     loadLanguage() {
-        // console.log(this.languageDao);
         this.languageDao.fetch().then((languages) => {
             console.log(languages);
             if (languages) {
@@ -74,12 +75,6 @@ class PopularPage extends Component {
             style={this.state.theme.styles.navBar}
             rightButton={this.renderRightButton()}
         />
-        // <Text tabLabel='Tab1'>My</Text>
-        //                 <Text tabLabel='Tab2'>favorite</Text>
-        //                 <Text tabLabel='Tab3'>project</Text>
-        //                 <Text tabLabel='Tab4'>favorite</Text>
-        //                 <Text tabLabel='Tab5'>project</Text>
-        console.log(this.state.languages);
         let content = this.state.languages.length > 0 ?
             <ScrollableTabView
                 tabBarUnderlineStyle={{backgroundColor: '#e7e7e7', height: 2}}
@@ -100,6 +95,7 @@ class PopularPage extends Component {
             <View style={styles.container}>
                 {navigationBar}
                 {content}
+                
             </View>
         )
     }
