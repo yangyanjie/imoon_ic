@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {
     StyleSheet,
-    View,
     Image
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';

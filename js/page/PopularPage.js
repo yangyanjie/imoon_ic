@@ -15,10 +15,14 @@ import ViewUtils from '../util/ViewUtils';
 import LanguageDao, {FLAG_LANGUAGE} from '../expand/dao/LanguageDao';
 import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view';
 import BaseComponent from './BaseComponent';
+import RepositoryCell from '../common/RepositoryCell';
 import DataRepository, {FLAG_STORAGE} from '../expand/dao/DataRepository';
 import ProjectModel from '../model/ProjectModel';
+import FavoriteDao from '../expand/dao/FavoriteDao';
+import Utils from '../util/Utils';
+const URL = 'https://api.github.com/search/repositories?q=';
 const QUERY_STR = '&sort=stars';
-
+var favoriteDao = new FavoriteDao(FLAG_STORAGE.flag_popular);
 var dataRepository = new DataRepository(FLAG_STORAGE.flag_popular);
 class PopularPage extends Component {
     constructor(props) {
