@@ -109,6 +109,7 @@ export default class MoreMenu extends Component {
                 break;
             case MORE_MENU.Share:
                 var shareApp = share.share_app;
+                console.log(shareApp);
                 UShare.share(shareApp.title, shareApp.content,
                     shareApp.imgUrl, shareApp.url, () => {
                     }, () => {
