@@ -22,7 +22,7 @@ import FavoriteDao from '../expand/dao/FavoriteDao'
 import ProjectModel from '../model/ProjectModel'
 import {FLAG_TAB} from './HomePage'
 // import SearchPage from './SearchPage'
-// import MoreMenu, {MORE_MENU} from '../common/MoreMenu'
+import MoreMenu, {MORE_MENU} from '../common/MoreMenu'
 import Utils from '../util/Utils'
 import ViewUtils from '../util/ViewUtils'
 import NavigatorUtil from '../util/NavigatorUtil'
@@ -75,6 +75,30 @@ class PopularPage extends Component {
             </View>
         )
     }
+    renderMoreView() {
+        let params = {...this.props, fromPage: FLAG_TAB.flag_popularTab}
+        return <MoreMenu
+            ref="moreMenu"
+            {...params}
+            menus={[MORE_MENU.Custom_Key, MORE_MENU.Sort_Key, MORE_MENU.Remove_Key, MORE_MENU.Share, MORE_MENU.Custom_Theme,
+                MORE_MENU.About_Author, MORE_MENU.About]}
+            onMoreMenuSelect={(e) => {
+                if (e === MORE_MENU.Custom_Theme) {
+                    this.setState({
+                        customThemeViewVisible: true
+                    })
+                }
+            }}
+        />
+    }
+
+    renderCustomThemeView() {
+        return (<CustomThemePage
+            visible={this.state.customThemeViewVisible}
+            {...this.props}
+            onClose={() => this.setState({customThemeViewVisible: false})}
+        />)
+    }
     render() {
         var statusBar = {
             backgroundColor: this.state.theme.themeColor,
@@ -106,7 +130,8 @@ class PopularPage extends Component {
             <View style={styles.container}>
                 {navigationBar}
                 {content}
-                
+                {this.renderMoreView()}
+                {this.renderCustomThemeView()}
             </View>
         )
     }
