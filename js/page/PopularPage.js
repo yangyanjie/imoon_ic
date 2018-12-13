@@ -10,16 +10,23 @@ import {
     DeviceEventEmitter,
 
 } from 'react-native';
-import NavigationBar from '../common/NavigationBar';
-import ViewUtils from '../util/ViewUtils';
-import LanguageDao, {FLAG_LANGUAGE} from '../expand/dao/LanguageDao';
-import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view';
-import BaseComponent from './BaseComponent';
-import RepositoryCell from '../common/RepositoryCell';
-import DataRepository, {FLAG_STORAGE} from '../expand/dao/DataRepository';
-import ProjectModel from '../model/ProjectModel';
-import FavoriteDao from '../expand/dao/FavoriteDao';
-import Utils from '../util/Utils';
+import NavigationBar from '../common/NavigationBar'
+import ActionUtils from '../util/ActionUtils'
+import CustomThemePage from './my/CustomTheme'
+import BaseComponent from './BaseComponent'
+import DataRepository, {FLAG_STORAGE} from '../expand/dao/DataRepository'
+import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view'
+import RepositoryCell from '../common/RepositoryCell'
+import LanguageDao, {FLAG_LANGUAGE} from '../expand/dao/LanguageDao'
+import FavoriteDao from '../expand/dao/FavoriteDao'
+import ProjectModel from '../model/ProjectModel'
+import {FLAG_TAB} from './HomePage'
+// import SearchPage from './SearchPage'
+// import MoreMenu, {MORE_MENU} from '../common/MoreMenu'
+import Utils from '../util/Utils'
+import ViewUtils from '../util/ViewUtils'
+import NavigatorUtil from '../util/NavigatorUtil'
+
 const URL = 'https://api.github.com/search/repositories?q=';
 const QUERY_STR = '&sort=stars';
 var favoriteDao = new FavoriteDao(FLAG_STORAGE.flag_popular);
