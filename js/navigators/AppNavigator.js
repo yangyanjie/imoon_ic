@@ -4,6 +4,7 @@ import HomePage from '../page/HomePage';
 import TrendingPage from '../page/TrendingPage';
 import FavoritePage from '../page/FavoritePage';
 import MyPage from '../page/my/MyPage';
+import RepositoryDetail from '../page/RepositoryDetail';
 
 const StackNavigator = createStackNavigator({
     WelcomePage: {
@@ -20,6 +21,9 @@ const StackNavigator = createStackNavigator({
     },
     MyPage: {
         screen: MyPage,
+    },
+    RepositoryDetail: {
+        screen: RepositoryDetail
     },
 },{
     defaultNavigationOptions: {

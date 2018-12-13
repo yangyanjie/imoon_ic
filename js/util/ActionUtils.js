@@ -7,6 +7,7 @@ export default class ActionUtils {
      * @param params 要传递的一些参数
      */
     static onSelectRepository(params) {
+        // console.log(params);
         NavigatorUtil.goToRepositoryDetail(params);
     }
     /**
