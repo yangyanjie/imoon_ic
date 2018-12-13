@@ -10,8 +10,13 @@
     "GitHubTrending": "^3.0.1",
     "react": "16.6.1",
     "react-native": "0.57.6",
+    "react-native-check-box": "^2.1.6",
+    "react-native-easy-toast": "^1.1.0",
     "react-native-gesture-handler": "^1.0.10",
+    "react-native-htmlview": "^0.13.0",
+    "react-native-parallax-scroll-view": "^0.21.3",
     "react-native-scrollable-tab-view": "^0.10.0",
+    "react-native-sortable-listview": "^0.2.8",
     "react-native-splash-screen": "^3.1.1",
     "react-native-tab-navigator": "^0.3.4",
     "react-navigation": "^3.0.4"
