@@ -15,13 +15,9 @@ import {
     Linking,
     ViewPropTypes
 } from 'react-native'
-// import CustomKeyPage from "../page/my/CustomKeyPage";
-// import SortKeyPagePage from "../page/my/SortKeyPagePage";
 import {FLAG_LANGUAGE} from "../expand/dao/LanguageDao";
-// import AboutPage from '../page/about/AboutPage'
-// import AboutMePage from '../page/about/AboutMePage'
-import UShare from '../common/UShare'
-import MenuDialog from '../common/MenuDialog'
+import UShare from './UShare'
+import MenuDialog from './MenuDialog'
 import NavigatorUtil from '../util/NavigatorUtil'
 import share from '../../res/data/share.json'
 

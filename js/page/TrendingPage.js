@@ -22,7 +22,7 @@ import LanguageDao, {FLAG_LANGUAGE} from '../expand/dao/LanguageDao';
 import FavoriteDao from '../expand/dao/FavoriteDao';
 import ViewUtils from '../util/ViewUtils';
 import {FLAG_TAB} from './HomePage';
-// import MoreMenu, {MORE_MENU} from '../common/MoreMenu';
+import MoreMenu, {MORE_MENU} from '../common/MoreMenu';
 import ProjectModel from '../model/ProjectModel';
 import Utils from '../util/Utils';
 
@@ -30,7 +30,7 @@ const API_URL = 'https://github.com/trending/';
 const EVENT_TYPE_TIME_SPAN_CHANGE="EVENT_TYPE_TIME_SPAN_CHANGE";
 var favoriteDao = new FavoriteDao(FLAG_STORAGE.flag_trending);
 var dataRepository = new DataRepository(FLAG_STORAGE.flag_trending);
-class TrendingPage extends Component {
+class TrendingPage extends BaseComponent {
     constructor(props) {
         super(props);
         this.languageDao = new LanguageDao(FLAG_LANGUAGE.flag_language)
@@ -44,7 +44,7 @@ class TrendingPage extends Component {
     }
     loadLanguage() {
         this.languageDao.fetch().then((languages) => {
-            console.log(languages);
+            //console.log(languages);
             if (languages) {
                 this.setState({
                     languages: languages,
@@ -56,22 +56,23 @@ class TrendingPage extends Component {
         
     }
     
-    // renderMoreView() {
-    //     let params = {...this.props, fromPage: FLAG_TAB.flag_popularTab}
-    //     return <MoreMenu
-    //         ref="moreMenu"
-    //         {...params}
-    //         menus={[MORE_MENU.Custom_Language, MORE_MENU.Sort_Language, MORE_MENU.Share, MORE_MENU.Custom_Theme,
-    //             MORE_MENU.About_Author, MORE_MENU.About]}
-    //         onMoreMenuSelect={(e) => {
-    //             if (e === MORE_MENU.Custom_Theme) {
-    //                 this.setState({
-    //                     customThemeViewVisible: true
-    //                 })
-    //             }
-    //         }}
-    //     />
-    // }
+    renderMoreView() {
+        let params = {...this.props, fromPage: FLAG_TAB.flag_popularTab}
+        console.log(params);
+        return <MoreMenu
+            ref="moreMenu"
+            {...params}
+            menus={[MORE_MENU.Custom_Language, MORE_MENU.Sort_Language, MORE_MENU.Share, MORE_MENU.Custom_Theme,
+                MORE_MENU.About_Author, MORE_MENU.About]}
+            onMoreMenuSelect={(e) => {
+                if (e === MORE_MENU.Custom_Theme) {
+                    this.setState({
+                        customThemeViewVisible: true
+                    })
+                }
+            }}
+        />
+    }
     showPopover() {
         this.dialog.show();
     }
@@ -154,7 +155,7 @@ class TrendingPage extends Component {
                 {navigationBar}
                 {content}
                 {timeSpanView}
-                {/* {this.renderMoreView()} */}
+                {this.renderMoreView()}
                 {this.renderCustomThemeView()}
                 {this.renderTrendingDialog()}
                 
