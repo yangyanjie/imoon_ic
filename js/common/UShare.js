@@ -1,2 +1,3 @@
-import { NativeModules } from 'react-native';
-module.exports = NativeModules.UShare;
+import {Share} from 'react-native';
+
+module.exports = Share;

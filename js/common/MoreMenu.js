@@ -20,7 +20,6 @@ import UShare from './UShare'
 import MenuDialog from './MenuDialog'
 import NavigatorUtil from '../util/NavigatorUtil'
 import share from '../../res/data/share.json'
-
 export const MORE_MENU = {
     Custom_Language: {name: '自定义语言', icon: require('../page/my/img/ic_custom_language.png')},
     Sort_Language: {name: '语言排序', icon: require('../page/my/img/ic_swap_vert.png')},
@@ -35,7 +34,22 @@ export const MORE_MENU = {
     Share: {name: '分享', icon: require('../../res/images/ic_share.png')},
 };
 import PropTypes from 'prop-types';
-
+// UShare.share({
+//     title: '阿九加油',
+//     message: '宝贝是最棒的',
+//     url: 'http://www.baidu.com'
+    
+// },{
+//     dialogTitle: 'Share React Native website',
+//     excludedActivityTypes: [
+//       'com.apple.UIKit.activity.PostToTwitter'
+//     ],
+//     tintColor: 'green'
+//   }).then((res) => {
+//     debugger;
+//     console.log(res);
+//   })
+//   .catch((error) => this.setState({result: 'error: ' + error.message}));
 export default class MoreMenu extends Component {
     constructor(props) {
         super(props);
@@ -110,10 +124,28 @@ export default class MoreMenu extends Component {
             case MORE_MENU.Share:
                 var shareApp = share.share_app;
                 console.log(shareApp);
-                UShare.share(shareApp.title, shareApp.content,
-                    shareApp.imgUrl, shareApp.url, () => {
-                    }, () => {
-                    })
+                // UShare.share(shareApp.title, shareApp.content,
+                //     shareApp.imgUrl, shareApp.url, () => {
+                //     }, () => {
+                //     })
+                
+                UShare.share({
+                    title: '阿九加油',
+                    message: '宝贝是最棒的',
+                    url: 'http://www.baidu.com'
+                    
+                },{
+                    dialogTitle: 'Share React Native website',
+                    excludedActivityTypes: [
+                      'com.apple.UIKit.activity.PostToTwitter'
+                    ],
+                    tintColor: 'green'
+                  }).then((res) => {
+                    debugger;
+                    console.log(res);
+                  })
+                  .catch((error) => this.setState({result: 'error: ' + error.message}));
+                
                 break;
         }
         if (TargetComponent) {

@@ -13,7 +13,7 @@ export default class NavigatorUtil {
      * 跳转到仓库详情页
      */
     static goToRepositoryDetail(params) {
-        console.log(params);
+        // console.log(params);
         const {navigation, projectModel, flag, theme, onUpdateFavorite} = params;
         navigation.navigate("RepositoryDetail", {
             navigation: navigation,
@@ -28,7 +28,7 @@ export default class NavigatorUtil {
      * 跳转首页
      */
     static resetToHomePage(params) {
-        console.log(params);
+        // console.log(params);
         const {navigation, theme, selectedTab} = params;
         const resetAction = StackActions.reset({
             index: 0,
