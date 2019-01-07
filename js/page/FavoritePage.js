@@ -21,7 +21,7 @@ import FavoriteDao from '../expand/dao/FavoriteDao'
 import ProjectModel from '../model/ProjectModel'
 import ArrayUtils from '../util/ArrayUtils'
 
-class FavoritePage extends Component {
+class FavoritePage extends BaseComponent {
     constructor(props) {
         super(props);
         this.state = {

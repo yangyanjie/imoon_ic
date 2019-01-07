@@ -100,14 +100,15 @@ class HomePage extends BaseComponent {
         DeviceEventEmitter.emit(EVENT_TYPE_HOME_TAB_SELECT, from, to)
     }
     _renderTab(Component,selectedTab, title, renderIcon ) {
+        //console.log(this.state.theme.styles.tabBarSelectedIcon)
         return (
             <TabNavigator.Item
                 title={title}
                 selectedTitleStyle={this.state.theme.styles.selectedTitleStyle}
+                SelectedIconStyle={this.state.theme.styles.tabBarSelectedIcon}
                 selected={this.state.selectedTab === selectedTab}
-                renderIcon={() => <Image style={styles.image} source={renderIcon}
-                renderSelectedIcon={() => <Image style={[styles.image, this.state.theme.styles.tabBarSelectedIcon]} source={renderIcon}/>}
-                />}
+                renderIcon={() => <Image style={styles.image} source={renderIcon} />}
+                renderSelectedIcon={() => <Image style={[styles.image,this.state.theme.styles.tabBarSelectedIcon]} source={renderIcon}/>}          
                 onPress={() => this.onTabClick(this.state.selectedTab, selectedTab)}
             >
                 <Component {...this.props} theme={this.state.theme}/>

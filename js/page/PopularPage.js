@@ -26,12 +26,13 @@ import MoreMenu, {MORE_MENU} from '../common/MoreMenu'
 import Utils from '../util/Utils'
 import ViewUtils from '../util/ViewUtils'
 import NavigatorUtil from '../util/NavigatorUtil'
+// import BaseComponent from './BaseComponent'
 
 const URL = 'https://api.github.com/search/repositories?q=';
 const QUERY_STR = '&sort=stars';
 var favoriteDao = new FavoriteDao(FLAG_STORAGE.flag_popular);
 var dataRepository = new DataRepository(FLAG_STORAGE.flag_popular);
-class PopularPage extends Component {
+class PopularPage extends BaseComponent {
     constructor(props) {
         super(props);
         this.languageDao = new LanguageDao(FLAG_LANGUAGE.flag_key)

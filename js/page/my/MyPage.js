@@ -21,7 +21,7 @@ import NavigatorUtil from '../../util/NavigatorUtil'
 import AboutPage from '../about/AboutPage'
 import AboutMePage from '../about/AboutMePage'
 
-class MyPage extends Component {
+class MyPage extends BaseComponent {
     constructor(props){
         super(props);
         this.state={
